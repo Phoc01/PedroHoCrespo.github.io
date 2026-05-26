@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedro Henrique Crespo | Portfólio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #cbd5e1;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: #0f172a;
+      border-left: 5px solid #16a34a;
+      padding-left: 10px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #075985;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin: 5px 5px 0 0;
+    }
+
+    footer {
+      text-align: center;
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Pedro Henrique Crespo</h1>
+    <p>Gestão, Finanças e Dados aplicados à tomada de decisão empresarial.</p>
+  </header>
+
+  <section>
+    <h2>Sobre mim</h2>
+    <div class="card">
+      <p>
+        Sou administrador com atuação em gestão empresarial, finanças, planejamento comercial
+        e análise de dados. Tenho experiência prática na estruturação de processos, controle
+        de faturamento, análise de despesas, metas comerciais, dashboards e indicadores de performance.
+      </p>
+      <p>
+        Atualmente desenvolvo projetos que unem administração, investimentos e análise de dados
+        para transformar informações em decisões mais claras, rápidas e estratégicas.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Áreas de atuação</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Gestão Empresarial</h3>
+        <p>Organização de processos, metas, rotinas comerciais, controles internos e análise de desempenho.</p>
+      </div>
+
+      <div class="card">
+        <h3>Finanças</h3>
+        <p>Controle financeiro, análise de despesas, fluxo de caixa, DRE, crédito e planejamento financeiro.</p>
+      </div>
+
+      <div class="card">
+        <h3>Análise de Dados</h3>
+        <p>Criação de dashboards, indicadores, relatórios gerenciais e análises para tomada de decisão.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projetos</h2>
+
+    <div class="card">
+      <h3>Dashboard de Faturamento - BrandRio</h3>
+      <p>
+        Projeto de controle de faturamento diário, metas mensais, ranking de lojas e acompanhamento
+        de performance comercial.
+      </p>
+      <span class="tag">Google Sheets</span>
+      <span class="tag">KPIs</span>
+      <span class="tag">Dashboard</span>
+      <span class="tag">Gestão Comercial</span>
+    </div>
+
+    <div class="card">
+      <h3>Organização de Despesas Empresariais</h3>
+      <p>
+        Estruturação de base financeira para classificação de despesas, análise gerencial e melhoria
+        da visão financeira do grupo.
+      </p>
+      <span class="tag">Finanças</span>
+      <span class="tag">Classificação de Dados</span>
+      <span class="tag">Controle Gerencial</span>
+    </div>
+
+    <div class="card">
+      <h3>Sistema de Avaliação de Clientes</h3>
+      <p>
+        Desenvolvimento de sistema simples para coleta de feedback de clientes, permitindo análise
+        de satisfação e melhoria no atendimento.
+      </p>
+      <span class="tag">Google Forms</span>
+      <span class="tag">Apps Script</span>
+      <span class="tag">Experiência do Cliente</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Habilidades</h2>
+    <div class="card">
+      <span class="tag">Excel</span>
+      <span class="tag">Google Sheets</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">Indicadores</span>
+      <span class="tag">Gestão Financeira</span>
+      <span class="tag">Administração</span>
+      <span class="tag">Análise de Dados</span>
+      <span class="tag">GitHub</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contato</h2>
+    <div class="card">
+      <p><strong>LinkedIn:</strong> inserir link aqui</p>
+      <p><strong>E-mail:</strong> inserir e-mail aqui</p>
+      <p><strong>WhatsApp:</strong> inserir contato aqui</p>
+      <p><strong>GitHub:</strong> inserir link aqui</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Pedro Henrique Crespo. Portfólio profissional.</p>
+  </footer>
+
+</body>
+</html>
