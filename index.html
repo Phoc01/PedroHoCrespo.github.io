@@ -1,59 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedro Henrique Crespo | Portfólio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro Henrique Crespo | Gestão, Finanças e Dados</title>
 
   <style>
+    :root {
+      --azul-escuro: #0f172a;
+      --azul-medio: #1e293b;
+      --verde: #16a34a;
+      --verde-claro: #dcfce7;
+      --cinza-fundo: #f8fafc;
+      --cinza-texto: #475569;
+      --branco: #ffffff;
+      --borda: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f8;
-      color: #1f2937;
+      background: var(--cinza-fundo);
+      color: var(--azul-escuro);
+      line-height: 1.6;
     }
 
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    header h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    nav {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--branco);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    header p {
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
       font-size: 18px;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
       color: #cbd5e1;
     }
 
-    section {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .nav-links a:hover {
+      color: var(--branco);
     }
 
-    h2 {
-      color: #0f172a;
-      border-left: 5px solid #16a34a;
-      padding-left: 10px;
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #14532d 100%);
+      color: var(--branco);
+      padding: 90px 20px;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.1;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #cbd5e1;
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      color: #bbf7d0;
+    }
+
+    .hero-card p {
+      font-size: 15px;
+      margin: 8px 0;
+      color: #e2e8f0;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--verde);
+      color: var(--branco);
+    }
+
+    .btn-primary:hover {
+      background: #15803d;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--branco);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 55px 20px;
+    }
+
+    .section-title {
+      margin-bottom: 24px;
+    }
+
+    .section-title span {
+      color: var(--verde);
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      margin: 8px 0 10px;
+    }
+
+    .section-title p {
+      color: var(--cinza-texto);
+      max-width: 760px;
     }
 
     .card {
-      background: white;
-      padding: 25px;
-      margin: 20px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
     }
 
-    .grid {
+    .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      color: var(--verde);
+    }
+
+    .metric span {
+      color: var(--cinza-texto);
+      font-size: 14px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--azul-escuro);
+    }
+
+    .card p {
+      color: var(--cinza-texto);
+      margin-bottom: 16px;
     }
 
     .tag {
@@ -61,127 +233,398 @@
       background: #e0f2fe;
       color: #075985;
       padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 14px;
-      margin: 5px 5px 0 0;
+      border-radius: 999px;
+      font-size: 13px;
+      margin: 4px 4px 0 0;
+      font-weight: bold;
+    }
+
+    .tag-green {
+      background: var(--verde-claro);
+      color: #166534;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      border-left: 4px solid var(--verde);
+      padding-left: 18px;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 5px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--cinza-texto);
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--branco);
+      border-radius: 22px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact-box p {
+      color: #cbd5e1;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-links a {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 13px 16px;
+      border-radius: 12px;
+      color: var(--branco);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: 0.2s;
+    }
+
+    .contact-links a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
     }
 
     footer {
+      background: var(--azul-escuro);
+      color: #94a3b8;
       text-align: center;
-      background: #0f172a;
-      color: #cbd5e1;
-      padding: 30px 20px;
-      margin-top: 40px;
+      padding: 28px 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .grid-3,
+      .grid-2,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .nav-container {
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-container {
+        flex-direction: column;
+      }
+
+      header {
+        padding: 65px 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .section-title h2 {
+        font-size: 26px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Pedro Henrique Crespo</div>
+      <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#atuacao">Atuação</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
   <header>
-    <h1>Pedro Henrique Crespo</h1>
-    <p>Gestão, Finanças e Dados aplicados à tomada de decisão empresarial.</p>
+    <div class="hero">
+      <div>
+        <h1>Gestão, Finanças e Dados para decisões mais inteligentes.</h1>
+        <p>
+          Sou Pedro Henrique Crespo, administrador com atuação em gestão empresarial,
+          finanças, planejamento comercial e análise de dados. Transformo informações
+          operacionais em indicadores, dashboards e decisões estratégicas.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+          <a class="btn btn-secondary" href="mailto:Pedrohocrespo01@hotmail.com">Enviar e-mail</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/pedro-henrique-oliveira-crespo-809471207/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Foco profissional</h3>
+        <p><strong>Administração:</strong> processos, rotinas, metas e organização empresarial.</p>
+        <p><strong>Finanças:</strong> controle, análise, DRE, despesas e planejamento.</p>
+        <p><strong>Dados:</strong> dashboards, KPIs, relatórios e tomada de decisão.</p>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <h2>Sobre mim</h2>
+  <section id="sobre">
+    <div class="section-title">
+      <span>Sobre mim</span>
+      <h2>Perfil profissional</h2>
+      <p>
+        Minha atuação combina visão de gestão, domínio financeiro e evolução técnica em análise de dados.
+      </p>
+    </div>
+
     <div class="card">
       <p>
-        Sou administrador com atuação em gestão empresarial, finanças, planejamento comercial
-        e análise de dados. Tenho experiência prática na estruturação de processos, controle
-        de faturamento, análise de despesas, metas comerciais, dashboards e indicadores de performance.
+        Sou administrador e atuo com gestão empresarial, análise financeira, planejamento comercial,
+        estruturação de processos e acompanhamento de indicadores. Tenho experiência prática em controle
+        de faturamento, metas comerciais, organização de despesas, rotinas gerenciais e criação de dashboards.
       </p>
+
       <p>
-        Atualmente desenvolvo projetos que unem administração, investimentos e análise de dados
-        para transformar informações em decisões mais claras, rápidas e estratégicas.
+        Atualmente, desenvolvo projetos que unem Administração, Finanças e Análise de Dados,
+        com foco em transformar dados brutos em informações claras para apoiar decisões empresariais.
+      </p>
+
+      <p>
+        Meu objetivo é construir soluções simples, visuais e funcionais para melhorar a gestão,
+        reduzir ruídos operacionais e dar mais clareza aos números do negócio.
       </p>
     </div>
   </section>
 
   <section>
-    <h2>Áreas de atuação</h2>
-    <div class="grid">
+    <div class="grid-3">
+      <div class="card metric">
+        <strong>3+</strong>
+        <span>Frentes de atuação: gestão, finanças e dados</span>
+      </div>
+
+      <div class="card metric">
+        <strong>7</strong>
+        <span>Lojas acompanhadas em rotinas de gestão e indicadores</span>
+      </div>
+
+      <div class="card metric">
+        <strong>100%</strong>
+        <span>Foco em decisões orientadas por dados</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="atuacao">
+    <div class="section-title">
+      <span>Áreas de atuação</span>
+      <h2>Onde aplico minha experiência</h2>
+      <p>
+        Minha base está na prática empresarial: entender o problema, organizar os dados,
+        criar indicadores e transformar análise em ação.
+      </p>
+    </div>
+
+    <div class="grid-3">
       <div class="card">
         <h3>Gestão Empresarial</h3>
-        <p>Organização de processos, metas, rotinas comerciais, controles internos e análise de desempenho.</p>
+        <p>
+          Organização de processos, metas, rotinas comerciais, acompanhamento de equipes,
+          visão gerencial e apoio à tomada de decisão.
+        </p>
+        <span class="tag tag-green">Processos</span>
+        <span class="tag tag-green">Metas</span>
+        <span class="tag tag-green">Gestão</span>
       </div>
 
       <div class="card">
         <h3>Finanças</h3>
-        <p>Controle financeiro, análise de despesas, fluxo de caixa, DRE, crédito e planejamento financeiro.</p>
+        <p>
+          Análise de despesas, fluxo de caixa, DRE, planejamento financeiro,
+          crédito, investimentos e organização de informações gerenciais.
+        </p>
+        <span class="tag">DRE</span>
+        <span class="tag">Fluxo de Caixa</span>
+        <span class="tag">Despesas</span>
       </div>
 
       <div class="card">
         <h3>Análise de Dados</h3>
-        <p>Criação de dashboards, indicadores, relatórios gerenciais e análises para tomada de decisão.</p>
+        <p>
+          Construção de dashboards, indicadores comerciais, relatórios,
+          tratamento de dados e acompanhamento de performance.
+        </p>
+        <span class="tag tag-green">Dashboards</span>
+        <span class="tag tag-green">KPIs</span>
+        <span class="tag tag-green">Relatórios</span>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>Projetos</h2>
-
-    <div class="card">
-      <h3>Dashboard de Faturamento - BrandRio</h3>
+  <section id="projetos">
+    <div class="section-title">
+      <span>Projetos</span>
+      <h2>Cases e projetos práticos</h2>
       <p>
-        Projeto de controle de faturamento diário, metas mensais, ranking de lojas e acompanhamento
-        de performance comercial.
+        Projetos desenvolvidos com foco em gestão, análise de performance,
+        organização financeira e melhoria da tomada de decisão.
       </p>
-      <span class="tag">Google Sheets</span>
-      <span class="tag">KPIs</span>
-      <span class="tag">Dashboard</span>
-      <span class="tag">Gestão Comercial</span>
     </div>
 
-    <div class="card">
-      <h3>Organização de Despesas Empresariais</h3>
-      <p>
-        Estruturação de base financeira para classificação de despesas, análise gerencial e melhoria
-        da visão financeira do grupo.
-      </p>
-      <span class="tag">Finanças</span>
-      <span class="tag">Classificação de Dados</span>
-      <span class="tag">Controle Gerencial</span>
-    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Dashboard de Faturamento - BrandRio</h3>
+        <p>
+          Estruturação de controle de faturamento diário, metas mensais,
+          acompanhamento por loja, ranking de desempenho e visão gerencial.
+        </p>
+        <span class="tag">Google Sheets</span>
+        <span class="tag">KPIs</span>
+        <span class="tag">Dashboard</span>
+        <span class="tag">Gestão Comercial</span>
+      </div>
 
-    <div class="card">
-      <h3>Sistema de Avaliação de Clientes</h3>
-      <p>
-        Desenvolvimento de sistema simples para coleta de feedback de clientes, permitindo análise
-        de satisfação e melhoria no atendimento.
-      </p>
-      <span class="tag">Google Forms</span>
-      <span class="tag">Apps Script</span>
-      <span class="tag">Experiência do Cliente</span>
+      <div class="card">
+        <h3>Controle de Metas por Loja</h3>
+        <p>
+          Criação de modelo para acompanhar metas comerciais, evolução mensal,
+          dias úteis, desempenho por unidade e necessidade de vendas diárias.
+        </p>
+        <span class="tag tag-green">Metas</span>
+        <span class="tag tag-green">Indicadores</span>
+        <span class="tag tag-green">Varejo</span>
+      </div>
+
+      <div class="card">
+        <h3>Organização de Despesas Empresariais</h3>
+        <p>
+          Estruturação de base financeira para classificação de despesas,
+          análise gerencial e melhoria da visão financeira do grupo.
+        </p>
+        <span class="tag">Finanças</span>
+        <span class="tag">Classificação de Dados</span>
+        <span class="tag">Controle Gerencial</span>
+      </div>
+
+      <div class="card">
+        <h3>Sistema de Avaliação de Clientes</h3>
+        <p>
+          Desenvolvimento de sistema simples para coleta de feedback,
+          análise de satisfação e apoio à melhoria da experiência do cliente.
+        </p>
+        <span class="tag tag-green">Google Forms</span>
+        <span class="tag tag-green">Apps Script</span>
+        <span class="tag tag-green">CX</span>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Habilidades</h2>
+  <section id="habilidades">
+    <div class="section-title">
+      <span>Habilidades</span>
+      <h2>Ferramentas e competências</h2>
+      <p>
+        Competências aplicadas em gestão, finanças, análise de dados e estruturação empresarial.
+      </p>
+    </div>
+
     <div class="card">
       <span class="tag">Excel</span>
       <span class="tag">Google Sheets</span>
       <span class="tag">Power BI</span>
+      <span class="tag">Google Forms</span>
+      <span class="tag">Apps Script</span>
       <span class="tag">Indicadores</span>
+      <span class="tag">Dashboards</span>
+      <span class="tag">KPIs</span>
       <span class="tag">Gestão Financeira</span>
       <span class="tag">Administração</span>
       <span class="tag">Análise de Dados</span>
       <span class="tag">GitHub</span>
+      <span class="tag">Planejamento Comercial</span>
+      <span class="tag">Processos</span>
     </div>
   </section>
 
-  <section>
-    <h2>Contato</h2>
-    <div class="card">
-      <p><strong>LinkedIn:</strong> inserir link aqui</p>
-      <p><strong>E-mail:</strong> inserir e-mail aqui</p>
-      <p><strong>WhatsApp:</strong> inserir contato aqui</p>
-      <p><strong>GitHub:</strong> inserir link aqui</p>
+  <section id="formacao">
+    <div class="section-title">
+      <span>Formação e certificações</span>
+      <h2>Base profissional</h2>
+    </div>
+
+    <div class="card timeline">
+      <div class="timeline-item">
+        <h3>Administração</h3>
+        <p>Formação voltada para gestão, finanças, processos, estratégia e tomada de decisão empresarial.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>ANCORD - Assessor de Investimentos</h3>
+        <p>Certificação voltada ao mercado financeiro, investimentos e relacionamento com investidores.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>FEBRABAN - Correspondente Bancário e LGPD</h3>
+        <p>Conhecimentos aplicados a produtos financeiros, crédito, atendimento e proteção de dados.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Análise de Dados</h3>
+        <p>Desenvolvimento contínuo em dados, dashboards, indicadores, análise de performance e ferramentas digitais.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="contact-box">
+      <div>
+        <h2>Vamos conversar?</h2>
+        <p>
+          Para oportunidades profissionais, projetos de gestão, análise de dados,
+          consultoria financeira ou parcerias estratégicas, entre em contato pelos canais abaixo.
+        </p>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:Pedrohocrespo01@hotmail.com">E-mail profissional</a>
+        <a href="https://wa.me/5522998196745" target="_blank">WhatsApp profissional</a>
+        <a href="https://www.linkedin.com/in/pedro-henrique-oliveira-crespo-809471207/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Phoc01" target="_blank">GitHub</a>
+      </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 Pedro Henrique Crespo. Portfólio profissional.</p>
+    <p>© 2026 Pedro Henrique Crespo. Portfólio profissional em Gestão, Finanças e Análise de Dados.</p>
   </footer>
 
 </body>
