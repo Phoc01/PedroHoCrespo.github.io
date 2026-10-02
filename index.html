@@ -30,16 +30,32 @@
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <h1 id="hero-title">Agentes de IA para o trabalho real da sua empresa.</h1>
+          <h1 id="hero-title">Agentes de IA para o <span class="hero-accent">trabalho real</span> da sua empresa.</h1>
           <p>Quando a rotina depende de copiar informações, refazer documentos e organizar pedidos, sobra menos espaço para gerir o negócio.</p>
           <p>O Atlas Bull desenvolve soluções para essas tarefas, com processos claros e pessoas validando o que importa.</p>
-          <div class="actions"><a class="button primary" href="#contato">Conversar sobre meu processo</a><a class="text-link" href="#exemplo">Explorar um exemplo</a></div>
+          <div class="actions"><a class="button primary" href="#contato">Conversar sobre meu processo<svg class="button-arrow" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a><a class="text-link" href="#exemplo">Explorar um exemplo</a></div>
           <p class="hero-note">Para donos e gestores que querem organizar a operação e ganhar produtividade.</p>
         </div>
-        <figure class="office-figure">
-          <div class="figure-heading"><span>Da missão à entrega</span><span class="capture-label">Visão ilustrativa</span></div>
-          <img src="assets/atlas-fluxo.svg" width="960" height="660" alt="Fluxo ilustrativo do Atlas Bull: entender a tarefa, produzir com agentes, revisar com pessoas e acompanhar a entrega.">
-          <figcaption>Visão ilustrativa de como organizamos o trabalho. Sem conexão ao Office ou a dados ao vivo.</figcaption>
+        <figure class="office-figure mission-figure">
+          <div class="figure-heading"><span>Da missão à entrega</span><span class="capture-label">Explore o percurso</span></div>
+          <div class="mission-board" data-stage="0">
+            <div class="mission-canvas">
+              <svg class="mission-connections" viewBox="0 0 620 460" aria-hidden="true" focusable="false">
+                <g class="mission-spokes"><path d="M110 100L310 228L510 100M110 350L310 228L510 350"/></g>
+                <g class="mission-routes"><path pathLength="1" d="M110 100H510"/><path pathLength="1" d="M510 100V350"/><path pathLength="1" d="M510 350H110"/><path pathLength="1" d="M110 350V100"/></g>
+                <circle class="mission-packet" r="5" cx="110" cy="100" visibility="hidden"/>
+              </svg>
+              <div class="mission-core" aria-hidden="true"><img src="assets/atlas-bull.png" alt="" width="92" height="92"><span>ATLAS</span></div>
+              <button class="mission-node node-mission" type="button" data-step="0" aria-pressed="true" aria-controls="mission-detail" disabled><span class="node-number">01</span><strong>Missão</strong><span>Entender o pedido</span></button>
+              <button class="mission-node node-agents" type="button" data-step="1" aria-pressed="false" aria-controls="mission-detail" disabled><span class="node-number">02</span><strong>Agentes</strong><span>Organizar e produzir</span></button>
+              <button class="mission-node node-review" type="button" data-step="2" aria-pressed="false" aria-controls="mission-detail" disabled><span class="node-number">03</span><strong>Revisão</strong><span>Conferir com pessoas</span></button>
+              <button class="mission-node node-delivery" type="button" data-step="3" aria-pressed="false" aria-controls="mission-detail" disabled><span class="node-number">04</span><strong>Entrega</strong><span>Usar e acompanhar</span></button>
+              <span class="mission-topic">Exemplo: orçamento</span>
+            </div>
+            <div class="mission-detail" id="mission-detail" aria-live="polite" aria-atomic="true"><span class="mission-position">01 / 04</span><div><h3>O trabalho começa com contexto.</h3><p>Pedido, catálogo e condições da empresa entram no mesmo fluxo.</p></div></div>
+            <div class="mission-controls"><button class="mission-play" type="button" disabled><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m7 4 8 6-8 6Z"/></svg><span>Ver o percurso</span></button><span>Clique em uma etapa para explorar.</span></div>
+          </div>
+          <figcaption>Exemplo interativo ilustrativo. Não executa agentes nem se conecta aos seus dados.</figcaption>
         </figure>
       </div>
       <div class="container hero-bottom"><span>Processos antes de ferramentas.</span><span>Validação humana em cada entrega.</span></div>
@@ -47,9 +63,9 @@
     <section class="section container" id="solucoes" aria-labelledby="solutions-title">
       <div class="section-heading"><h2 id="solutions-title">O ponto de partida é uma tarefa que se repete.</h2><p>Estas são aplicações possíveis. Cada solução depende do processo, dos dados disponíveis e do escopo combinado com a empresa.</p></div>
       <div class="solution-list">
-        <article class="solution"><h3>Catálogo e orçamento</h3><p>Organizar informações de produtos e preparar propostas a partir de um pedido.</p><div><strong>Entrega possível</strong><p>Rascunho de orçamento para revisar preços, condições e disponibilidade antes de enviar.</p></div></article>
-        <article class="solution"><h3>Documentos e relatórios</h3><p>Transformar informações dispersas em documentos consistentes e fáceis de consultar.</p><div><strong>Entrega possível</strong><p>Relatório estruturado com fontes e pendências para conferência do responsável.</p></div></article>
-        <article class="solution"><h3>Conteúdo e campanhas</h3><p>Preparar textos e organizar materiais a partir da oferta e da identidade da empresa.</p><div><strong>Entrega possível</strong><p>Proposta de conteúdo e calendário para aprovação antes da publicação.</p></div></article>
+        <article class="solution"><h3>Catálogo e orçamento<button class="solution-explore" type="button" data-process="orcamento" hidden>Explorar este processo<svg class="button-arrow" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></button></h3><p>Organizar informações de produtos e preparar propostas a partir de um pedido.</p><div><strong>Entrega possível</strong><p>Rascunho de orçamento para revisar preços, condições e disponibilidade antes de enviar.</p></div></article>
+        <article class="solution"><h3>Documentos e relatórios<button class="solution-explore" type="button" data-process="relatorio" hidden>Explorar este processo<svg class="button-arrow" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></button></h3><p>Transformar informações dispersas em documentos consistentes e fáceis de consultar.</p><div><strong>Entrega possível</strong><p>Relatório estruturado com fontes e pendências para conferência do responsável.</p></div></article>
+        <article class="solution"><h3>Conteúdo e campanhas<button class="solution-explore" type="button" data-process="conteudo" hidden>Explorar este processo<svg class="button-arrow" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></button></h3><p>Preparar textos e organizar materiais a partir da oferta e da identidade da empresa.</p><div><strong>Entrega possível</strong><p>Proposta de conteúdo e calendário para aprovação antes da publicação.</p></div></article>
       </div>
     </section>
     <section class="example-section" id="exemplo" aria-labelledby="example-title">
