@@ -1,631 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedro Henrique Crespo | Gestão, Finanças e Dados</title>
-
-  <style>
-    :root {
-      --azul-escuro: #0f172a;
-      --azul-medio: #1e293b;
-      --verde: #16a34a;
-      --verde-claro: #dcfce7;
-      --cinza-fundo: #f8fafc;
-      --cinza-texto: #475569;
-      --branco: #ffffff;
-      --borda: #e2e8f0;
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cinza-fundo);
-      color: var(--azul-escuro);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    nav {
-      width: 100%;
-      background: rgba(15, 23, 42, 0.96);
-      color: var(--branco);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: bold;
-      font-size: 18px;
-      letter-spacing: 0.3px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      font-size: 14px;
-      color: #cbd5e1;
-    }
-
-    .nav-links a:hover {
-      color: var(--branco);
-    }
-
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #14532d 100%);
-      color: var(--branco);
-      padding: 90px 20px;
-    }
-
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: 46px;
-      line-height: 1.1;
-      margin: 0 0 18px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #cbd5e1;
-      max-width: 680px;
-      margin-bottom: 28px;
-    }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 20px;
-      padding: 28px;
-      backdrop-filter: blur(8px);
-    }
-
-    .hero-card h3 {
-      margin-top: 0;
-      color: #bbf7d0;
-    }
-
-    .hero-card p {
-      font-size: 15px;
-      margin: 8px 0;
-      color: #e2e8f0;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 14px;
-      transition: 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--verde);
-      color: var(--branco);
-    }
-
-    .btn-primary:hover {
-      background: #15803d;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--branco);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-2px);
-    }
-
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 55px 20px;
-    }
-
-    .section-title {
-      margin-bottom: 24px;
-    }
-
-    .section-title span {
-      color: var(--verde);
-      font-weight: bold;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .section-title h2 {
-      font-size: 32px;
-      margin: 8px 0 10px;
-    }
-
-    .section-title p {
-      color: var(--cinza-texto);
-      max-width: 760px;
-    }
-
-    .card {
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: 18px;
-      padding: 26px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .metric {
-      text-align: center;
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 28px;
-      color: var(--verde);
-    }
-
-    .metric span {
-      color: var(--cinza-texto);
-      font-size: 14px;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: var(--azul-escuro);
-    }
-
-    .card p {
-      color: var(--cinza-texto);
-      margin-bottom: 16px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #e0f2fe;
-      color: #075985;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      margin: 4px 4px 0 0;
-      font-weight: bold;
-    }
-
-    .tag-green {
-      background: var(--verde-claro);
-      color: #166534;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
-
-    .timeline-item {
-      border-left: 4px solid var(--verde);
-      padding-left: 18px;
-    }
-
-    .timeline-item h3 {
-      margin: 0 0 5px;
-    }
-
-    .timeline-item p {
-      margin: 0;
-      color: var(--cinza-texto);
-    }
-
-    .contact-box {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: var(--branco);
-      border-radius: 22px;
-      padding: 34px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .contact-box p {
-      color: #cbd5e1;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact-links a {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 13px 16px;
-      border-radius: 12px;
-      color: var(--branco);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: 0.2s;
-    }
-
-    .contact-links a:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-    }
-
-    footer {
-      background: var(--azul-escuro);
-      color: #94a3b8;
-      text-align: center;
-      padding: 28px 20px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 850px) {
-      .hero,
-      .grid-3,
-      .grid-2,
-      .contact-box {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .nav-container {
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .nav-container {
-        flex-direction: column;
-      }
-
-      header {
-        padding: 65px 20px;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .section-title h2 {
-        font-size: 26px;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        text-align: center;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#022843">
+  <meta name="description" content="Atlas Bull: desenvolvimento de soluções com agentes de IA para processos empresariais, com validação humana. Estratégia que vira execução.">
+  <meta property="og:title" content="Atlas Bull — Estratégia que vira execução">
+  <meta property="og:description" content="Agentes de IA para o trabalho real da sua empresa. Conheça aplicações possíveis e converse sobre seu processo.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <title>Atlas Bull — Agentes de IA para o trabalho real</title>
+  <link rel="icon" type="image/png" href="assets/atlas-bull.png">
+  <link rel="apple-touch-icon" href="assets/atlas-bull.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Pedro Henrique Crespo</div>
-      <div class="nav-links">
-        <a href="#sobre">Sobre</a>
-        <a href="#atuacao">Atuação</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#contato">Contato</a>
-      </div>
-    </div>
-  </nav>
-
-  <header>
-    <div class="hero">
-      <div>
-        <h1>Gestão, Finanças e Dados para decisões mais inteligentes.</h1>
-        <p>
-          Sou Pedro Henrique Crespo, administrador com atuação em gestão empresarial,
-          finanças, planejamento comercial e análise de dados. Transformo informações
-          operacionais em indicadores, dashboards e decisões estratégicas.
-        </p>
-
-        <div class="buttons">
-          <a class="btn btn-primary" href="#projetos">Ver projetos</a>
-          <a class="btn btn-secondary" href="mailto:Pedrohocrespo01@hotmail.com">Enviar e-mail</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/pedro-henrique-oliveira-crespo-809471207/" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <h3>Foco profissional</h3>
-        <p><strong>Administração:</strong> processos, rotinas, metas e organização empresarial.</p>
-        <p><strong>Finanças:</strong> controle, análise, DRE, despesas e planejamento.</p>
-        <p><strong>Dados:</strong> dashboards, KPIs, relatórios e tomada de decisão.</p>
-      </div>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Atlas Bull — início"><img src="assets/atlas-bull.png" width="56" height="56" alt=""><span>ATLAS BULL<small>Estratégia que vira execução.</small></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navegacao" hidden>Menu</button>
+      <nav id="navegacao" aria-label="Navegação principal">
+        <a href="#solucoes">Soluções</a><a href="#exemplo">Na prática</a><a href="#como-funciona">Como funciona</a><a class="nav-contact" href="#contato">Vamos conversar</a>
+      </nav>
     </div>
   </header>
-
-  <section id="sobre">
-    <div class="section-title">
-      <span>Sobre mim</span>
-      <h2>Perfil profissional</h2>
-      <p>
-        Minha atuação combina visão de gestão, domínio financeiro e evolução técnica em análise de dados.
-      </p>
-    </div>
-
-    <div class="card">
-      <p>
-        Sou administrador e atuo com gestão empresarial, análise financeira, planejamento comercial,
-        estruturação de processos e acompanhamento de indicadores. Tenho experiência prática em controle
-        de faturamento, metas comerciais, organização de despesas, rotinas gerenciais e criação de dashboards.
-      </p>
-
-      <p>
-        Atualmente, desenvolvo projetos que unem Administração, Finanças e Análise de Dados,
-        com foco em transformar dados brutos em informações claras para apoiar decisões empresariais.
-      </p>
-
-      <p>
-        Meu objetivo é construir soluções simples, visuais e funcionais para melhorar a gestão,
-        reduzir ruídos operacionais e dar mais clareza aos números do negócio.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="grid-3">
-      <div class="card metric">
-        <strong>3+</strong>
-        <span>Frentes de atuação: gestão, finanças e dados</span>
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">Agentes de IA para o trabalho real da sua empresa.</h1>
+          <p>Quando a rotina depende de copiar informações, refazer documentos e organizar pedidos, sobra menos espaço para gerir o negócio.</p>
+          <p>O Atlas Bull desenvolve soluções para essas tarefas, com processos claros e pessoas validando o que importa.</p>
+          <div class="actions"><a class="button primary" href="#contato">Conversar sobre meu processo</a><a class="text-link" href="#exemplo">Explorar um exemplo</a></div>
+          <p class="hero-note">Para donos e gestores que querem organizar a operação e ganhar produtividade.</p>
+        </div>
+        <figure class="office-figure">
+          <div class="figure-heading"><span>Da missão à entrega</span><span class="capture-label">Visão ilustrativa</span></div>
+          <img src="assets/atlas-fluxo.svg" width="960" height="660" alt="Fluxo ilustrativo do Atlas Bull: entender a tarefa, produzir com agentes, revisar com pessoas e acompanhar a entrega.">
+          <figcaption>Visão ilustrativa de como organizamos o trabalho. Sem conexão ao Office ou a dados ao vivo.</figcaption>
+        </figure>
       </div>
-
-      <div class="card metric">
-        <strong>7</strong>
-        <span>Lojas acompanhadas em rotinas de gestão e indicadores</span>
+      <div class="container hero-bottom"><span>Processos antes de ferramentas.</span><span>Validação humana em cada entrega.</span></div>
+    </section>
+    <section class="section container" id="solucoes" aria-labelledby="solutions-title">
+      <div class="section-heading"><h2 id="solutions-title">O ponto de partida é uma tarefa que se repete.</h2><p>Estas são aplicações possíveis. Cada solução depende do processo, dos dados disponíveis e do escopo combinado com a empresa.</p></div>
+      <div class="solution-list">
+        <article class="solution"><h3>Catálogo e orçamento</h3><p>Organizar informações de produtos e preparar propostas a partir de um pedido.</p><div><strong>Entrega possível</strong><p>Rascunho de orçamento para revisar preços, condições e disponibilidade antes de enviar.</p></div></article>
+        <article class="solution"><h3>Documentos e relatórios</h3><p>Transformar informações dispersas em documentos consistentes e fáceis de consultar.</p><div><strong>Entrega possível</strong><p>Relatório estruturado com fontes e pendências para conferência do responsável.</p></div></article>
+        <article class="solution"><h3>Conteúdo e campanhas</h3><p>Preparar textos e organizar materiais a partir da oferta e da identidade da empresa.</p><div><strong>Entrega possível</strong><p>Proposta de conteúdo e calendário para aprovação antes da publicação.</p></div></article>
       </div>
-
-      <div class="card metric">
-        <strong>100%</strong>
-        <span>Foco em decisões orientadas por dados</span>
+    </section>
+    <section class="example-section" id="exemplo" aria-labelledby="example-title">
+      <div class="container example-grid">
+        <div><h2 id="example-title">Da entrada à aprovação.</h2><p>Escolha um processo e veja como uma tarefa pode ser organizada com um agente de IA.</p><p class="illustration-note">Exemplo ilustrativo local. A seleção apenas troca o conteúdo abaixo; não executa tarefas, acessa sistemas ou usa dados da sua empresa.</p><label class="process-label" for="processo-exemplo">Processo do exemplo</label><select id="processo-exemplo"><option value="orcamento">Preparar um orçamento</option><option value="relatorio">Organizar um relatório</option><option value="conteudo">Planejar conteúdo</option></select><noscript><p>Ative o JavaScript para trocar o exemplo. O fluxo de orçamento já está disponível abaixo.</p></noscript></div>
+        <div class="process-panel" aria-live="polite" aria-atomic="true">
+          <h3 id="example-process">Preparar um orçamento</h3>
+          <dl><div><dt>Entrada</dt><dd id="example-input">Pedido do cliente, catálogo e condições comerciais fornecidos pela empresa.</dd></div><div><dt>Trabalho do agente</dt><dd id="example-work">Organizar os itens solicitados e apontar informações que faltam.</dd></div><div><dt>Entrega</dt><dd id="example-output">Rascunho de proposta com itens, valores fornecidos e pendências destacadas.</dd></div><div class="approval"><dt>Aprovação humana</dt><dd id="example-approval">O responsável confere preços, estoque e condições e decide sobre o envio.</dd></div></dl>
+          <a class="text-link" href="#contato">Conversar sobre uma tarefa parecida</a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section id="atuacao">
-    <div class="section-title">
-      <span>Áreas de atuação</span>
-      <h2>Onde aplico minha experiência</h2>
-      <p>
-        Minha base está na prática empresarial: entender o problema, organizar os dados,
-        criar indicadores e transformar análise em ação.
-      </p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3>Gestão Empresarial</h3>
-        <p>
-          Organização de processos, metas, rotinas comerciais, acompanhamento de equipes,
-          visão gerencial e apoio à tomada de decisão.
-        </p>
-        <span class="tag tag-green">Processos</span>
-        <span class="tag tag-green">Metas</span>
-        <span class="tag tag-green">Gestão</span>
-      </div>
-
-      <div class="card">
-        <h3>Finanças</h3>
-        <p>
-          Análise de despesas, fluxo de caixa, DRE, planejamento financeiro,
-          crédito, investimentos e organização de informações gerenciais.
-        </p>
-        <span class="tag">DRE</span>
-        <span class="tag">Fluxo de Caixa</span>
-        <span class="tag">Despesas</span>
-      </div>
-
-      <div class="card">
-        <h3>Análise de Dados</h3>
-        <p>
-          Construção de dashboards, indicadores comerciais, relatórios,
-          tratamento de dados e acompanhamento de performance.
-        </p>
-        <span class="tag tag-green">Dashboards</span>
-        <span class="tag tag-green">KPIs</span>
-        <span class="tag tag-green">Relatórios</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="projetos">
-    <div class="section-title">
-      <span>Projetos</span>
-      <h2>Cases e projetos práticos</h2>
-      <p>
-        Projetos desenvolvidos com foco em gestão, análise de performance,
-        organização financeira e melhoria da tomada de decisão.
-      </p>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <h3>Dashboard de Faturamento - BrandRio</h3>
-        <p>
-          Estruturação de controle de faturamento diário, metas mensais,
-          acompanhamento por loja, ranking de desempenho e visão gerencial.
-        </p>
-        <span class="tag">Google Sheets</span>
-        <span class="tag">KPIs</span>
-        <span class="tag">Dashboard</span>
-        <span class="tag">Gestão Comercial</span>
-      </div>
-
-      <div class="card">
-        <h3>Controle de Metas por Loja</h3>
-        <p>
-          Criação de modelo para acompanhar metas comerciais, evolução mensal,
-          dias úteis, desempenho por unidade e necessidade de vendas diárias.
-        </p>
-        <span class="tag tag-green">Metas</span>
-        <span class="tag tag-green">Indicadores</span>
-        <span class="tag tag-green">Varejo</span>
-      </div>
-
-      <div class="card">
-        <h3>Organização de Despesas Empresariais</h3>
-        <p>
-          Estruturação de base financeira para classificação de despesas,
-          análise gerencial e melhoria da visão financeira do grupo.
-        </p>
-        <span class="tag">Finanças</span>
-        <span class="tag">Classificação de Dados</span>
-        <span class="tag">Controle Gerencial</span>
-      </div>
-
-      <div class="card">
-        <h3>Sistema de Avaliação de Clientes</h3>
-        <p>
-          Desenvolvimento de sistema simples para coleta de feedback,
-          análise de satisfação e apoio à melhoria da experiência do cliente.
-        </p>
-        <span class="tag tag-green">Google Forms</span>
-        <span class="tag tag-green">Apps Script</span>
-        <span class="tag tag-green">CX</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="habilidades">
-    <div class="section-title">
-      <span>Habilidades</span>
-      <h2>Ferramentas e competências</h2>
-      <p>
-        Competências aplicadas em gestão, finanças, análise de dados e estruturação empresarial.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="tag">Excel</span>
-      <span class="tag">Google Sheets</span>
-      <span class="tag">Power BI</span>
-      <span class="tag">Google Forms</span>
-      <span class="tag">Apps Script</span>
-      <span class="tag">Indicadores</span>
-      <span class="tag">Dashboards</span>
-      <span class="tag">KPIs</span>
-      <span class="tag">Gestão Financeira</span>
-      <span class="tag">Administração</span>
-      <span class="tag">Análise de Dados</span>
-      <span class="tag">GitHub</span>
-      <span class="tag">Planejamento Comercial</span>
-      <span class="tag">Processos</span>
-    </div>
-  </section>
-
-  <section id="formacao">
-    <div class="section-title">
-      <span>Formação e certificações</span>
-      <h2>Base profissional</h2>
-    </div>
-
-    <div class="card timeline">
-      <div class="timeline-item">
-        <h3>Administração</h3>
-        <p>Formação voltada para gestão, finanças, processos, estratégia e tomada de decisão empresarial.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>ANCORD - Assessor de Investimentos</h3>
-        <p>Certificação voltada ao mercado financeiro, investimentos e relacionamento com investidores.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>FEBRABAN - Correspondente Bancário e LGPD</h3>
-        <p>Conhecimentos aplicados a produtos financeiros, crédito, atendimento e proteção de dados.</p>
-      </div>
-
-      <div class="timeline-item">
-        <h3>Análise de Dados</h3>
-        <p>Desenvolvimento contínuo em dados, dashboards, indicadores, análise de performance e ferramentas digitais.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contato">
-    <div class="contact-box">
-      <div>
-        <h2>Vamos conversar?</h2>
-        <p>
-          Para oportunidades profissionais, projetos de gestão, análise de dados,
-          consultoria financeira ou parcerias estratégicas, entre em contato pelos canais abaixo.
-        </p>
-      </div>
-
-      <div class="contact-links">
-        <a href="mailto:Pedrohocrespo01@hotmail.com">E-mail profissional</a>
-        <a href="https://wa.me/5522998196745" target="_blank">WhatsApp profissional</a>
-        <a href="https://www.linkedin.com/in/pedro-henrique-oliveira-crespo-809471207/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/Phoc01" target="_blank">GitHub</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 Pedro Henrique Crespo. Portfólio profissional em Gestão, Finanças e Análise de Dados.</p>
-  </footer>
-
+    </section>
+    <section class="section container office-context" aria-labelledby="office-title">
+      <h2 id="office-title">Nosso Office organiza o desenvolvimento.<br>A solução nasce para a sua operação.</h2>
+      <div class="context-grid"><div><h3>Dentro do Atlas Bull</h3><p>O Atlas Office local coordena tarefas de planejamento, produção e revisão. Já há tarefas reais executadas nesse ambiente; a primeira missão comercial é este site.</p></div><div><h3>Dentro da sua empresa</h3><p>A entrega é definida a partir da sua rotina: entradas, documentos, regras e responsáveis. O acesso a ferramentas e eventuais integrações precisam ser avaliados e acordados em cada projeto.</p></div></div>
+      <p class="context-note">Estamos no início da atuação comercial, ainda sem cases empresariais comprovados ou ganhos de receita medidos. Operação contínua e remota também depende de validação.</p>
+    </section>
+    <section class="method-section" id="como-funciona" aria-labelledby="method-title"><div class="container">
+      <div class="section-heading"><h2 id="method-title">Um processo claro, do começo ao acompanhamento.</h2><p>A empresa participa da definição e da validação. A IA prepara; as pessoas mantêm as decisões e a responsabilidade.</p></div>
+      <ol class="method"><li><span class="step">1</span><h3>Mapear</h3><p>Entender a tarefa, suas entradas, exceções e quem aprova a entrega.</p></li><li><span class="step">2</span><h3>Criar</h3><p>Desenvolver um fluxo com escopo e critérios de entrega definidos.</p></li><li><span class="step">3</span><h3>Validar</h3><p>Conferir a solução com o responsável e ajustar antes do uso combinado.</p></li><li><span class="step">4</span><h3>Acompanhar</h3><p>Revisar o uso e as necessidades de ajuste conforme as condições do projeto.</p></li></ol>
+    </div></section>
+    <section class="section container founder" aria-labelledby="founder-title"><div class="founder-mark"><img src="assets/atlas-bull.png" alt="Touro original da marca Atlas Bull" width="200" height="200" loading="lazy"></div><div><h2 id="founder-title">Gestão, processos e dados como base.</h2><p>O Atlas Bull é desenvolvido por <strong>Pedro Henrique Crespo</strong>, administrador com atuação em gestão empresarial, finanças, planejamento comercial e análise de dados.</p><p>Essa base orienta o trabalho: entender a rotina antes de construir a ferramenta e transformar informação em uma entrega útil para quem gere a empresa.</p><a class="text-link" href="https://www.linkedin.com/in/pedro-henrique-oliveira-crespo-809471207/" target="_blank" rel="noopener noreferrer">Conhecer o perfil no LinkedIn<span class="sr-only"> (abre em nova aba)</span></a></div></section>
+    <section class="section container faq" aria-labelledby="faq-title"><h2 id="faq-title">Antes de começar.</h2><div class="faq-list">
+      <details><summary>Preciso saber usar inteligência artificial?</summary><p>O ponto de partida é explicar a sua tarefa. A forma de uso, os materiais necessários e as orientações fazem parte da definição da solução.</p></details>
+      <details><summary>O agente toma decisões sozinho?</summary><p>O fluxo é definido com pontos de revisão humana. Preços, documentos, conteúdo e outras entregas precisam da conferência e da aprovação do responsável conforme o escopo.</p></details>
+      <details><summary>Já funciona com os sistemas da minha empresa?</summary><p>A compatibilidade depende das ferramentas, dos acessos autorizados e do processo. Integrações precisam ser avaliadas; não há uma conexão pronta prometida para todos os sistemas.</p></details>
+      <details><summary>Quanto custa e quanto tempo leva?</summary><p>Preço, prazo, entregáveis e condições de acompanhamento são definidos após entender a tarefa e combinar o escopo. A conversa inicial serve para levantar essas necessidades.</p></details>
+      <details><summary>Posso acessar o Atlas Office?</summary><p>O Atlas Office é nosso ambiente local de desenvolvimento e coordenação. O visitante não acessa esse escritório por este site. A solução entregue à empresa terá seu próprio formato de uso, combinado no projeto.</p></details>
+      <details><summary>O que acontece com os dados do formulário?</summary><p>O site prepara uma mensagem no seu navegador. Os dados não são armazenados pelo site. Ao continuar, você abre o WhatsApp ou o aplicativo de e-mail e decide se quer enviar a mensagem pelo serviço escolhido.</p></details>
+    </div></section>
+    <section class="contact-section" id="contato" aria-labelledby="contact-title"><div class="container contact-grid"><div><h2 id="contact-title">Qual tarefa merece sair do modo manual?</h2><p>Conte o que se repete na sua empresa. Vamos entender o processo e conversar sobre o que faz sentido construir.</p><div class="contact-links"><a href="https://wa.me/5522998196745" target="_blank" rel="noopener noreferrer">Conversar direto no WhatsApp<span class="sr-only"> (abre em nova aba)</span></a><a href="mailto:Pedrohocrespo01@hotmail.com">Pedrohocrespo01@hotmail.com</a></div><p class="contact-note">Contato com Pedro Henrique Crespo.<br>Não inclua informações sigilosas nesta primeira conversa.</p></div>
+      <form id="contact-form" aria-describedby="form-note">
+        <div class="form-row"><div><label for="nome">Seu nome</label><input id="nome" name="nome" autocomplete="name" maxlength="100" required></div><div><label for="empresa">Empresa</label><input id="empresa" name="empresa" autocomplete="organization" maxlength="150" required></div></div>
+        <label for="processo">Qual processo precisa melhorar?</label><textarea id="processo" name="processo" rows="4" maxlength="1500" placeholder="Ex.: preparar orçamentos a partir dos pedidos que recebo." required></textarea>
+        <label for="canal">Como prefere continuar?</label><select id="canal" name="canal"><option value="whatsapp">WhatsApp</option><option value="email">E-mail</option></select>
+        <p id="form-note">A mensagem será preparada para você revisar e confirmar o envio no canal escolhido. Este site não envia nem armazena seus dados.</p>
+        <button class="button primary" id="contact-submit" type="submit" disabled>Preparar mensagem no WhatsApp</button><p id="form-status" role="status"></p>
+        <noscript><p>Para usar o formulário, ative o JavaScript. Você também pode conversar pelos links de WhatsApp ou e-mail nesta seção.</p></noscript>
+      </form>
+    </div></section>
+  </main>
+  <footer class="container footer"><a class="footer-brand" href="#inicio">ATLAS BULL</a><p>Estratégia que vira execução.</p><span>© 2026 Pedro Henrique Crespo</span></footer>
 </body>
 </html>
